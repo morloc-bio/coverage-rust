@@ -1,0 +1,5 @@
+--' The coverage test suite against coverage-rust
+module test-coverage-rust (test)
+
+import coverage.test (test)
+import coverage-rust

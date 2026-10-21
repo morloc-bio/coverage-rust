@@ -1,0 +1,13 @@
+name: coverage-rust
+version: 0.1.0
+homepage: null
+synopsis: "Rust implementation of sequence coverage"
+description: Genome coverage by strand from a mapper's placements, written as bedGraph and bigWig from sorted change keys.
+category: bioinformatics
+license: MIT
+author: "Zebulun Arendsee"
+maintainer: "z@morloc.io"
+github: null
+bug-reports: null
+rust-deps:
+  flate2: "1"

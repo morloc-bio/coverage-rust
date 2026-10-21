@@ -1,0 +1,22 @@
+--' Rust implementation of the coverage module
+module coverage-rust (*)
+
+import coverage
+import bio-rust
+
+record Rust => CoverageRun = "CovRun"
+
+source Rust from "coverage.rs"
+  ( "cov_keys_pairs" as coverageKeysPairsWith
+  , "cov_keys_reads" as coverageKeysReadsWith
+  , "cov_runs" as coverageRunsNative
+  , "cov_write_track" as writeCoverageTrackNative
+  , "cov_write_combined" as writeCombinedTrackNative
+  )
+
+-- Each takes `bioRustAnchor 0` so that bio-rust's types are compiled in.
+coverageKeysPairsWith :: Int -> RefModels -> [ReadPair] -> [FragHits] -> [U64]
+coverageKeysReadsWith :: Int -> RefModels -> [FastqEntry] -> [FragHits] -> [U64]
+
+coverageKeysPairs r xs hs = coverageKeysPairsWith (bioRustAnchor 0) r xs hs
+coverageKeysReads r xs hs = coverageKeysReadsWith (bioRustAnchor 0) r xs hs
